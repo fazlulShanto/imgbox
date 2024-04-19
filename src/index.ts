@@ -10,7 +10,7 @@ interface Url {
   filename: string
   url: string
 }
-type Files =
+export type Files =
   | string[]
   | string
   | Buffer[]
@@ -42,15 +42,33 @@ const getImagesList = async (list: string[]): Promise<Images[]> => {
 
   return result
 }
-
-interface Result {
+export interface Result {
   ok: boolean
-  gallery_edit?: string
-  files?: any[]
-  message?: string
+  gallery_edit: string
+  files?: UploadedFile[],
+  message?: string,
 }
 
-export async function imgbox(images: Files): Promise<Result> {
+export interface UploadedFile {
+  id: string
+  slug: string
+  name: string
+  name_html_escaped: string
+  created_at: Date
+  created_at_human: string
+  updated_at: Date
+  gallery_id: string
+  url: string
+  original_url: string
+  thumbnail_url: string
+  square_url: string
+  selected: boolean
+  comments_enabled: number
+  comments_count: number
+}
+
+
+export const Uploader =  async (images: Files): Promise<Result> => {
   const { code, data } = toFormatArray(images)
   if (!code) throw new Error('Invalid input type')
 
@@ -80,3 +98,6 @@ export async function imgbox(images: Files): Promise<Result> {
   const result = await upload(imageList)
   return result
 }
+
+
+export default Uploader;
