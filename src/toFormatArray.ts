@@ -17,7 +17,7 @@ export default function (data: any): Upload {
   }
 
   // data = ['https://', 'http://', 'https://']
-  const isArrayOfUrlString = data.every(isUrl)
+  const isArrayOfUrlString = data?.every(isUrl)
   if (isArrayOfUrlString) {
     return {
       code: 1,

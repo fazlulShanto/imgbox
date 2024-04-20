@@ -81,7 +81,7 @@ class Imgbox {
       .split('input name="authenticity_token" type="hidden" value="')[1]
       .split('"')[0]
     const cookie =
-    (response.headers['set-cookie'] && response.headers['set-cookie'][1].split(';')[0]) + '; request_method=POST'
+      response.headers['set-cookie']![1].split(';')[0] + '; request_method=POST'
     this.setConfig(csrf, cookie)
   }
 
@@ -131,7 +131,7 @@ class Imgbox {
       console.error(error)
       return {
         ok: false,
-        message: ( error as Error).message,
+        message: (error as Error).message,
       }
     }
   }
