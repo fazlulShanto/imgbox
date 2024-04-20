@@ -2,6 +2,7 @@ import Imgbox from './Imgbox'
 import axios from 'axios'
 import toFormatArray from './toFormatArray'
 import crypto from 'crypto'
+import UploaderV2 from './singleFile/SingleFile'
 interface Images {
   filename: string
   buffer: Buffer
@@ -101,3 +102,4 @@ export const Uploader =  async (images: Files): Promise<Result> => {
 
 
 export default Uploader;
+export  {UploaderV2};

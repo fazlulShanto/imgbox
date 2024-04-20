@@ -15,7 +15,7 @@ function default_1(data) {
         };
     }
     // data = ['https://', 'http://', 'https://']
-    var isArrayOfUrlString = data.every(is_url_1.default);
+    var isArrayOfUrlString = data === null || data === void 0 ? void 0 : data.every(is_url_1.default);
     if (isArrayOfUrlString) {
         return {
             code: 1,

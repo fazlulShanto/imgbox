@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.imgbox = void 0;
+exports.Uploader = void 0;
 var Imgbox_1 = __importDefault(require("./Imgbox"));
 var axios_1 = __importDefault(require("axios"));
 var toFormatArray_1 = __importDefault(require("./toFormatArray"));
@@ -80,51 +80,50 @@ var getImagesList = function (list) { return __awaiter(void 0, void 0, void 0, f
         }
     });
 }); };
-function imgbox(images) {
-    return __awaiter(this, void 0, void 0, function () {
-        var _a, code, data, upload, imageList, _b, listBuffer, result;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
-                case 0:
-                    _a = (0, toFormatArray_1.default)(images), code = _a.code, data = _a.data;
-                    if (!code)
-                        throw new Error('Invalid input type');
-                    return [4 /*yield*/, _imgbox.init()];
-                case 1:
-                    upload = _c.sent();
-                    _b = code;
-                    switch (_b) {
-                        case 1: return [3 /*break*/, 2];
-                        case 2: return [3 /*break*/, 4];
-                        case 3: return [3 /*break*/, 6];
-                    }
-                    return [3 /*break*/, 7];
-                case 2: return [4 /*yield*/, getImagesList(data)];
-                case 3:
-                    imageList = _c.sent();
-                    return [3 /*break*/, 7];
-                case 4: return [4 /*yield*/, getImagesList(data.map(function (value) {
-                        return value.url;
-                    }))];
-                case 5:
-                    listBuffer = _c.sent();
-                    imageList = listBuffer.map(function (_a, index) {
-                        var buffer = _a.buffer;
-                        return ({
-                            filename: data[index].filename,
-                            buffer: buffer,
-                        });
+var Uploader = function (images) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, code, data, upload, imageList, _b, listBuffer, result;
+    return __generator(this, function (_c) {
+        switch (_c.label) {
+            case 0:
+                _a = (0, toFormatArray_1.default)(images), code = _a.code, data = _a.data;
+                if (!code)
+                    throw new Error('Invalid input type');
+                return [4 /*yield*/, _imgbox.init()];
+            case 1:
+                upload = _c.sent();
+                _b = code;
+                switch (_b) {
+                    case 1: return [3 /*break*/, 2];
+                    case 2: return [3 /*break*/, 4];
+                    case 3: return [3 /*break*/, 6];
+                }
+                return [3 /*break*/, 7];
+            case 2: return [4 /*yield*/, getImagesList(data)];
+            case 3:
+                imageList = _c.sent();
+                return [3 /*break*/, 7];
+            case 4: return [4 /*yield*/, getImagesList(data.map(function (value) {
+                    return value.url;
+                }))];
+            case 5:
+                listBuffer = _c.sent();
+                imageList = listBuffer.map(function (_a, index) {
+                    var buffer = _a.buffer;
+                    return ({
+                        filename: data[index].filename,
+                        buffer: buffer,
                     });
-                    return [3 /*break*/, 7];
-                case 6:
-                    imageList = data;
-                    return [3 /*break*/, 7];
-                case 7: return [4 /*yield*/, upload(imageList)];
-                case 8:
-                    result = _c.sent();
-                    return [2 /*return*/, result];
-            }
-        });
+                });
+                return [3 /*break*/, 7];
+            case 6:
+                imageList = data;
+                return [3 /*break*/, 7];
+            case 7: return [4 /*yield*/, upload(imageList)];
+            case 8:
+                result = _c.sent();
+                return [2 /*return*/, result];
+        }
     });
-}
-exports.imgbox = imgbox;
+}); };
+exports.Uploader = Uploader;
+exports.default = exports.Uploader;

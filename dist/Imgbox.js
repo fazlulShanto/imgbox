@@ -98,7 +98,7 @@ var Imgbox = /** @class */ (function () {
                         csrf = response.data
                             .split('input name="authenticity_token" type="hidden" value="')[1]
                             .split('"')[0];
-                        cookie = (response.headers['set-cookie'] && response.headers['set-cookie'][1].split(';')[0]) + '; request_method=POST';
+                        cookie = response.headers['set-cookie'][1].split(';')[0] + '; request_method=POST';
                         this.setConfig(csrf, cookie);
                         return [2 /*return*/];
                 }
